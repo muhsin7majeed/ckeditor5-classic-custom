@@ -6,26 +6,15 @@ import {
 } from "@ckeditor/ckeditor5-ui";
 import { Collection } from "@ckeditor/ckeditor5-utils";
 
-const availableVariables = [
-  { label: "First Name", var: "[First_Name]" },
-  { label: "Last Name", var: "[Last_Name]" },
-  { label: "Display Name", var: "[Display_Name]" },
-  { label: "Services", var: "[Services]" },
-  { label: "Service Address", var: "[Service_Address]" },
-  { label: "Scheduled", var: "[Scheduled]" },
-  { label: "Actual Start Time", var: "[Actual_Start_Time]" },
-  { label: "Actual End Time", var: "[Actual_End_Time]" },
-  { label: "Crew Assigned", var: "[Crew_Assigned]" },
-  { label: "Job Photos", var: "[Job_Photos]" },
-  { label: "Job Notes", var: "[Job_Notes]" },
-];
-
 export class InsertVariables extends Plugin {
   init() {
     const editor = this.editor;
 
     editor.ui.componentFactory.add("insertVariables", (locale) => {
       const items = new Collection();
+
+      const availableVariables = editor.config.get("personalization.items");
+      console.log(availableVariables);
 
       availableVariables.forEach((variable) => {
         items.add({

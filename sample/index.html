@@ -41,7 +41,9 @@
       <div class="centered">
         <div class="row row-editor">
           <div class="editor-container">
-            <div class="editor"></div>
+            <div class="editor">
+              <!-- <button>qwe</button> -->
+            </div>
 
             <button id="submit-btn">submit</button>
           </div>
@@ -55,6 +57,22 @@
     <script>
       ClassicEditor.create(document.querySelector(".editor"), {
         licenseKey: "",
+        image: { upload: { types: ["svg+xml", "png"] } },
+        personalization: {
+          items: [
+            { label: "First Name", var: "[First_Name]" },
+            { label: "Last Name", var: "[Last_Name]" },
+            { label: "Display Name", var: "[Display_Name]" },
+            { label: "Services", var: "[Services]" },
+            { label: "Service Address", var: "[Service_Address]" },
+            { label: "Scheduled", var: "[Scheduled]" },
+            { label: "Actual Start Time", var: "[Actual_Start_Time]" },
+            { label: "Actual End Time", var: "[Actual_End_Time]" },
+            { label: "Crew Assigned", var: "[Crew_Assigned]" },
+            { label: "Job Photos", var: "[Job_Photos]" },
+            { label: "Job Notes", var: "[Job_Notes]" },
+          ],
+        },
       })
         .then((editor) => {
           window.editor = editor;

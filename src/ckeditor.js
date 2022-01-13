@@ -30,6 +30,13 @@ import Strikethrough from "@ckeditor/ckeditor5-basic-styles/src/strikethrough.js
 import Underline from "@ckeditor/ckeditor5-basic-styles/src/underline.js";
 import WordCount from "@ckeditor/ckeditor5-word-count/src/wordcount.js";
 import { InsertVariables } from "./plugins/InsertVariables";
+import {
+  InsertFacebookIcon,
+  InsertInstagramIcon,
+  InsertTwitterIcon,
+} from "./plugins/socialIcons";
+import SimpleButton from "@samhammer/ckeditor5-simple-button-plugin";
+import { GeneralHtmlSupport } from "@ckeditor/ckeditor5-html-support";
 
 class Editor extends ClassicEditor {}
 
@@ -62,13 +69,29 @@ Editor.builtinPlugins = [
   Strikethrough,
   Underline,
   WordCount,
+  InsertFacebookIcon,
+  InsertTwitterIcon,
+  InsertInstagramIcon,
+  SimpleButton,
+  GeneralHtmlSupport,
 ];
 
 // Editor configuration.
 Editor.defaultConfig = {
+  htmlSupport: {
+    allow: [
+      {
+        name: /.*/,
+        attributes: true,
+        classes: true,
+        styles: true,
+      },
+    ],
+  },
   toolbar: {
     items: [
       "heading",
+      "button",
       "|",
       "alignment",
       "|",
@@ -89,6 +112,9 @@ Editor.defaultConfig = {
       "|",
       "insertVariables",
       "|",
+      "insertFacebookIcon",
+      "insertTwitterIcon",
+      "insertInstagramIcon",
     ],
   },
   language: "en",
